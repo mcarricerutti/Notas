@@ -1,14 +1,20 @@
-import CarpNotas from "./components/CarpNotas";
-import Files from "./components/Files";
-import Notes from "./components/Notes";
+import React from "react";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import NotasContainer from "./components/FunNote/FunNote";
 
 function App() {
 
   return (
     <>
-    <Files/>
-    <Notes/>
-    <CarpNotas/>
+    <BrowserRouter>
+
+    <Routes>
+
+      <Route path="/" element={<NotasContainer />}/>
+
+    </Routes>
+
+    </BrowserRouter>
     </>
   );
 }
