@@ -1,0 +1,14 @@
+.contListNotas{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-bottom: 50px;
+}
+.archivoNotas{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.titleArch{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,55 @@
+.contNota {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border:2px solid white;
+    color: grey;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 150px;
+    white-space: pre-wrap;
+}
+
+.footerNota {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.eliminarNota:hover {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 40%;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+
+.btnArchivar{
+    border: none;
+    padding: 5px 10px;
+    background-color: #DDF45B ;
+    color: black;
+    border-radius: 10px;
+}
+.btnArchivar:hover{
+    cursor: pointer;
+    color:black
+}
+
+
+
+
+
+
+
