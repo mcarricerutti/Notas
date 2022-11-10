@@ -1,6 +1,8 @@
 import './Note.css';
 import React, {useState} from "react";
 import {FaTrashAlt} from "react-icons/fa";
+import { BsBoxArrowDown } from "react-icons/bs";
+
 
 
 const Note = (props) => {
@@ -16,7 +18,7 @@ const Note = (props) => {
 
     return(
         <>
-        <div key={id} className="contNota">
+            <div key={id} className="contNota">
 
             <textarea cols="10" rows="8"
             onChange={handleChangeText}
@@ -24,16 +26,17 @@ const Note = (props) => {
 
             <div className='footerNota'>
                 <span>{date}</span>
-                <FaTrashAlt className='eliminarNota' onClick={()=> handleOnDelete(id)}/>
+                <button className="btnNote" onClick={()=> handleOnDelete(id)}><FaTrashAlt/></button>
+
                 {isFiled(id)
                 ?
-                <button className="btnArchivar" onClick={()=>{handleFileNote(id)}}>Desarchivar</button>
+                <button className="btnNote" onClick={()=>{handleFileNote(id)}}> <BsBoxArrowDown/> </button>
                 :
-                <button className="btnArchivar" onClick={()=>{handleFileNote(id)}}>Archivar</button>
+                <button className="btnNote" onClick={()=>{handleFileNote(id)}}> <BsBoxArrowDown/> </button>
                 }
             </div>
 
-        </div> 
+            </div> 
         </>
     )
 }

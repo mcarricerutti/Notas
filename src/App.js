@@ -4,13 +4,16 @@ import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 import NoteListContainer from "./components/NoteListContainer/NoteListContainer";
 import Buscador from "./components/Buscador/Buscador";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NewNote from './components/NewNote/NewNote';
+
 
 
 function App() {
   const [buscarNota, setBuscarNota] = useState("");
   const [archivarNotas, setArchivarNotas] = useState([]);
   const [notes, setNotes] = useState([]);
-  
+  const [cont, setCont] = useState(0);
 
   useEffect(() => {
     const guardarNotas = JSON.parse(
@@ -46,6 +49,22 @@ function App() {
     );
   }, [archivarNotas]);
 
+  useEffect(() => {
+    const guardarCantNotas = JSON.parse(
+      localStorage.getItem("cantNotas")
+    );
+    if(guardarCantNotas){
+      setCont(guardarCantNotas)
+    };
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "cantNotas",
+      JSON.stringify(cont)
+    );
+  }, [cont]);
+
 
   const addNote = (text) => {
     const date = new Date();
@@ -56,6 +75,7 @@ function App() {
     }
     const newNotes = [...notes, newNote]
     setNotes(newNotes);
+    setCont(cont +1);
   };
 
   const deleteNote = (id) => {
@@ -63,6 +83,7 @@ function App() {
     const deletedFileNote = archivarNotas.filter((note) => note.id !== id);
     setNotes(deletedNote);
     setArchivarNotas(deletedFileNote);
+    setCont(cont -1);
   };
 
   const isFiled = (id) => {
@@ -88,15 +109,32 @@ function App() {
   return (
     <>
     <div className="contenedorApp">
+      <div className='container'>
+      <div className='contTitleYCont'>
+        <h1 className="titleApp">Mis Notas</h1>
+        <p className='contador'> ({cont})</p>
+      </div>
       <Buscador handleBuscador={setBuscarNota} />
-      <NoteListContainer
-      notes={notes.filter((note) => note.text.includes(buscarNota))}
-      handleAddNote={addNote}
-      handleOnDelete={deleteNote}
-      handleFileNote={fileNotes}
-      filesNotes={archivarNotas}
-      isFiled={isFiled}
-      />
+      {
+        cont === 0 ?
+        <>
+        <NewNote
+        handleAddNote={addNote}
+        />
+        <p className='alertSinNot'>Sin Notas</p>
+        </>
+
+        :
+        <NoteListContainer
+        notes={notes.filter((note) => note.text.includes(buscarNota))}
+        handleAddNote={addNote}
+        handleOnDelete={deleteNote}
+        handleFileNote={fileNotes}
+        filesNotes={archivarNotas}
+        isFiled={isFiled}
+        />
+      }
+      </div>
     </div>
     </>
   );

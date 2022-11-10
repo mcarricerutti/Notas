@@ -19,10 +19,10 @@ const NoteListContainer = (props) => {
             noteArch ?
             <>
             <div className='archivoNotas' >
-                <button className='btnArchivar' onClick={archivedNotes}>Activas</button>
+                <button className='btnNote' onClick={archivedNotes}>Activas</button>
             </div>
             <div className='titleArch'>
-                <h3>Archivadas</h3>
+                <p>Archivadas</p>
             </div>
             <div className='contListNotas'>
                 {filesNotes.map((note) =>
@@ -33,10 +33,10 @@ const NoteListContainer = (props) => {
                 :
             <>
             <div className='archivoNotas' >
-                <button className='btnArchivar' onClick={archivedNotes}>Archivadas</button>
+                <button className='btnNote' onClick={archivedNotes}>Archivadas</button>
             </div>
             <div className='titleArch'>
-                <h3>Activas</h3>
+                <p>Activas</p>
             </div>
             <div className='contListNotas'>
                 <NewNote handleAddNote={handleAddNote} />

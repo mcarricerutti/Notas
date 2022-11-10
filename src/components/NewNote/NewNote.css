@@ -1,15 +1,19 @@
 .contNewNote{
     background-color: transparent;
+    margin-top: 4%;
+    text-align: center;
+    border-right: 2px solid rgb(255, 208, 0);
+    border-bottom: 2px solid rgb(255, 208, 0);
+    padding-bottom: 1%;
 }
 
 .spanNewNota{
     color: white;
-    margin-left: 83%;
     font-size: 14px;
 }
 
 .btnGuardarNewNota{
-    background-color: rgba(188, 226, 99, 0.74);
+    background-color: rgb(255, 208, 0);
     border: none;
     padding: 5px 10px;
     color: black;
@@ -17,6 +21,6 @@
 }
 
 .btnGuardarNewNota:hover{
-    background-color: rgba(181, 235, 57, 0.712);
+    background-color: rgb(233, 191, 6);
 }
 
